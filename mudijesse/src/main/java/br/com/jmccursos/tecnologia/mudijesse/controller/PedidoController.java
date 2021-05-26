@@ -1,6 +1,5 @@
 package br.com.jmccursos.tecnologia.mudijesse.controller;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
