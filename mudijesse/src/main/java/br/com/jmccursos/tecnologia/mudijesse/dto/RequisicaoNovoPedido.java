@@ -1,11 +1,16 @@
 package br.com.jmccursos.tecnologia.mudijesse.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.jmccursos.tecnologia.mudijesse.model.Pedido;
 
 public class RequisicaoNovoPedido {
 	
+	@NotBlank
 	private String nomeProduto;	
+	@NotBlank
 	private String urlProduto;		
+	@NotBlank
 	private String urlImagem;	
 	private String descricao;
 	public String getNomeProduto() {
