@@ -3,6 +3,7 @@ package br.com.jmccursos.tecnologia.mudijesse.dto;
 import javax.validation.constraints.NotBlank;
 
 import br.com.jmccursos.tecnologia.mudijesse.model.Pedido;
+import br.com.jmccursos.tecnologia.mudijesse.model.StatusPedido;
 
 public class RequisicaoNovoPedido {
 	
@@ -43,6 +44,7 @@ public class RequisicaoNovoPedido {
 		pedido.setNomeProduto(nomeProduto);
 		pedido.setUrlDaImagem(urlImagem);
 		pedido.setUrlDoProduto(nomeProduto);
+		pedido.setStatus(StatusPedido.AGUARDANDO);
 		return pedido;
 	}
 	
