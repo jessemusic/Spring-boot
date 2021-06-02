@@ -1,35 +1,31 @@
-package br.com.jmccursos.tecnologia.mudijesse.controller;
+package br.com.jmccursos.tecnologia.mudijesse.api;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.jmccursos.tecnologia.mudijesse.model.Pedido;
 import br.com.jmccursos.tecnologia.mudijesse.model.StatusPedido;
 import br.com.jmccursos.tecnologia.mudijesse.repositories.PedidoRepository;
 
-@Controller
-@RequestMapping("/home")
-public class HomeController {
+@RestController
+@RequestMapping("/api/pedidos")
+public class PedidoRest {
 	
 	@Autowired
-	private PedidoRepository pedidoRepository;
+	private PedidoRepository pedidoRepository; 
 	
-	@GetMapping
-	public String home(Model model, Principal principal) {			
-		Sort sort = Sort.by("dataDaEntrega").descending();		
+	@GetMapping("aguardando")
+	public List<Pedido> getPedidosAguardandoOfertas(){
+		Sort sort = Sort.by("id").descending();		
 		PageRequest paginacao = PageRequest.of(0, 10, sort);
-		
-		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE, paginacao);
-		model.addAttribute("pedidos",pedidos);
-		return "home";
-	}
 
+		return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, paginacao);
+		
+	}
 }

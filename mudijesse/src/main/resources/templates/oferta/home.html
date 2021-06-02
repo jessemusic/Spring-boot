@@ -1,0 +1,76 @@
+<html>
+
+<html>
+
+<head th:replace="~{base::head}"></head>
+
+<body onload="onLoad()">
+	<div th:replace="~{base::logo}"></div>
+	<div class="container" id="ofertas">
+		<div th:replace="~{base::titulo('Faça sua oferta')}"></div>
+
+		<div class="card mb-3" v-for="pedido in pedidos">
+
+			<div class="card-header alert-dark">{{pedido.nomeProduto}}</div>
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="row">
+							<div class="col-md-5">Valor: <input/></div>
+							
+							<div class="col-md-7">Data de entrega:<input/></div>
+						</div>
+
+						<div>Produto</div>
+						<div><a v-bind:href="pedido.urlDoProduto">{{pedido.nomeProduto}}</a></div>
+						
+
+						<div>Descrição</div>
+						<div>
+							<textarea class="form-control" >{{pedido.descricao}}</textarea>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-4">
+						<div>
+							<img class="img-thumbnail" v-bind:src="pedido.urlDaImagem"/>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<script>
+		function onLoad() {
+			var app = new Vue({
+				el: '#ofertas',
+				data: {
+					pedidos: [
+						{	
+							"nomeProduto": "Relógio Smartwatch Amazfit Band 5 com Alexa e Oximetro",
+							"valorNegociado": 19000,
+							"dataDaEntrega": null,
+							"urlDoProduto": "Relógio Smartwatch Amazfit Band 5 com Alexa e Oximetro",
+							"urlDaImagem": "https://images-na.ssl-images-amazon.com/images/I/61LyahVjFFL._AC_SL1204_.jpg",
+							"descricao": "Amazfit Band 5 Fitness Tracker, bateria de 15 dias, oxigênio",
+							"status": "AGUARDANDO"
+						},
+						{				
+							"nomeProduto": "Smartphone LG K22+ ",
+							"valorNegociado": 2000,
+							"dataDaEntrega": "2002-08-01",
+							"urlDoProduto": "https://www.amazon.com.br/Smartphone-LG-Mem%C3%B3ria-armazenamento-Android/dp/B08DRMM17M/",
+							"urlDaImagem": "https://images-na.ssl-images-amazon.com/images/I/71toL165IzL._AC_SL1500_.jpg",
+							"descricao": "Smartphone LG K22+ , 3GB Memória, 64GB armazenamento, Dual Chip Android 10 Tela 6.2\\\" Quad Core 4G Câmera 13MP+2MP - Titan",
+							"status": "AGUARDANDO"
+						}
+					]
+				}
+			});
+		}
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</body>
